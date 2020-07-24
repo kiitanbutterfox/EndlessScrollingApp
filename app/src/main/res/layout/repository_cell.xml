@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="15dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <LinearLayout
+            android:id="@+id/lnlUserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp">
+            <ImageView
+                android:id="@+id/imvUserAvatar"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_marginBottom="5dp"
+                android:scaleType="fitXY" />
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Username" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtRepositoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Repositório"
+            android:layout_alignTop="@id/lnlUserInfo"
+            android:layout_toRightOf="@id/lnlUserInfo"/>
+        <TextView
+            android:id="@+id/txtRepositoryDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descrição do Repositório Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum feugiat varius. Curabitur placerat mauris at sodales sodales. Aliquam interdum.  "
+            android:layout_below="@id/txtRepositoryName"
+            android:layout_alignLeft="@id/txtRepositoryName"/>
+        <TextView
+            android:id="@+id/txtRepositoryForkCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forks"
+            android:layout_below="@id/txtRepositoryDescription"
+            android:layout_alignLeft="@id/txtRepositoryName"/>
+        <TextView
+            android:id="@+id/txtRepositoryStarCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stars"
+            android:layout_below="@id/txtRepositoryDescription"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
