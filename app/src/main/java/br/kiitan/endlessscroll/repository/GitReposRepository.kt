@@ -8,20 +8,16 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 
-class GitReposRepository(reposPresenter: GitReposPresenter){
+class GitReposRepository(val reposPresenter: GitReposPresenter){
 
     fun getTopGitRepos() {
         val retrofit: Retrofit = RetrofitConfig.retrofit
         val gitReposAPI: GitReposAPI = retrofit.create(GitReposAPI::class.java)
-        var topGitRepos: TopGitRepos = TopGitRepos((arrayOf()))
 
         gitReposAPI.getRepositories("language:java", "stars", 1).apply {
             enqueue(object : Callback<TopGitRepos?> {
                 override fun onResponse(call: Call<TopGitRepos?>?, response: Response<TopGitRepos?>?) {
-                    if(response != null && response.body()!= null)
-                    {
-                        topGitRepos = response.body()!!
-                    }
+                    reposPresenter.setTopGitRepos(response?.body()?: TopGitRepos(arrayOf()))
                 }
 
                 override fun onFailure(call: Call<TopGitRepos?>?, t: Throwable?) {

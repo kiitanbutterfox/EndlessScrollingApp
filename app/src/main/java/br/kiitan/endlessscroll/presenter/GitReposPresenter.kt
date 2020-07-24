@@ -5,9 +5,9 @@ import br.kiitan.endlessscroll.model.TopGitRepos
 import br.kiitan.endlessscroll.repository.GitReposRepository
 import java.io.Serializable
 
-class GitReposPresenter(view: ReposContract.View):BasePresenter, ReposContract.Presenter {
+class GitReposPresenter(val view: ReposContract.View):BasePresenter, ReposContract.Presenter {
     private val repository = GitReposRepository(this)
-    lateinit var topGitRepos: TopGitRepos
+
 
     override fun getTopGitRepos(){
         repository.getTopGitRepos()
@@ -17,7 +17,7 @@ class GitReposPresenter(view: ReposContract.View):BasePresenter, ReposContract.P
         TODO("Not yet implemented")
     }
 
-    fun setTopGitRepos(){
-
+    fun setTopGitRepos(topGitRepos: TopGitRepos){
+        view.setTopGitRepos(topGitRepos)
     }
 }
