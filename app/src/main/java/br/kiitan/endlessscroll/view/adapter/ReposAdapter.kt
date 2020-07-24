@@ -32,7 +32,7 @@ class ReposAdapter(private val topRepos: Array<ReposItem>): RecyclerView.Adapter
                 .into(imvUserAvatar)
             txtRepositoryName.text = reposItem.name
             txtRepositoryDescription.text = reposItem.description
-            txtRepositoryForkCount.text = reposItem.fork_count.toString()
+            txtRepositoryForkCount.text = reposItem.forks_count.toString()
             txtRepositoryStarCount.text = reposItem.stargazers_count.toString()
         }
     }

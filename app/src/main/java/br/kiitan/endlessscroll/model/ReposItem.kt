@@ -8,6 +8,6 @@ data class ReposItem(
     val html_url: String,
     val description: String,
     val stargazers_count: Int,
-    val fork_count: Int
+    val forks_count: Int
 
 )
