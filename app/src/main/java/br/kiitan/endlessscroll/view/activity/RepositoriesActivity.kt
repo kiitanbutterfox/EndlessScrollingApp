@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import br.kiitan.endlessscroll.ChangeTitleListener
 import br.kiitan.endlessscroll.R
 import br.kiitan.endlessscroll.contract.ReposContract
@@ -14,7 +15,7 @@ import br.kiitan.endlessscroll.presenter.GitReposPresenter
 import br.kiitan.endlessscroll.view.fragment.BaseFragment
 import br.kiitan.endlessscroll.view.fragment.ReposFragment
 
-class RepositoriesActivity : BaseActivity(), ReposContract.View, ChangeTitleListener {
+class RepositoriesActivity : AppCompatActivity(), ReposContract.View, ChangeTitleListener {
     private lateinit var reposPresenter: ReposContract.Presenter
     private var currentFragment: BaseFragment? = null
     private lateinit var imvBack: ImageView
