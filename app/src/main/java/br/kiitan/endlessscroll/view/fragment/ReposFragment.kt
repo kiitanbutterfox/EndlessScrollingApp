@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.kiitan.endlessscroll.ChangeTitleListener
@@ -26,6 +27,7 @@ class ReposFragment : BaseFragment(), ReposContract.ReposFragmentView, ReposInte
     private lateinit var reposPresenter: ReposContract.Presenter
     private lateinit var gitReposList: Array<ReposItem>
     private lateinit var changeTitleListener: ChangeTitleListener
+    private lateinit var txtWarning: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.repositories_fragment, container, false)
@@ -56,30 +58,21 @@ class ReposFragment : BaseFragment(), ReposContract.ReposFragmentView, ReposInte
     override fun fillRepositoriesList(topGitRepos: TopGitRepos)
     {
         pgrLoadingRepos.visibility = View.GONE
-        gitReposList = topGitRepos.items
-        repositoriesManager = LinearLayoutManager(context)
-        repositoriesAdapter = ReposAdapter(gitReposList, this)
-        rcvRepositories = requireView().findViewById<RecyclerView>(R.id.rcvRepositories).apply{
-            setHasFixedSize(true)
-            val spacingItemDecoration = SpacingItemDecoration(30)
-            addItemDecoration(spacingItemDecoration)
-            layoutManager = repositoriesManager
-            adapter = repositoriesAdapter
-        }
-    }
-
-    fun fillRepositoriesList2(topGitRepos: TopGitRepos)
-    {
-        pgrLoadingRepos.visibility = View.GONE
-        gitReposList = topGitRepos.items
-        repositoriesManager = LinearLayoutManager(context)
-        repositoriesAdapter = ReposAdapter(gitReposList, this)
-        rcvRepositories = requireView().findViewById<RecyclerView>(R.id.rcvRepositories).apply{
-            setHasFixedSize(true)
-            val spacingItemDecoration = SpacingItemDecoration(30)
-            addItemDecoration(spacingItemDecoration)
-            layoutManager = repositoriesManager
-            adapter = repositoriesAdapter
+        txtWarning = requireView().findViewById(R.id.txtWarning)
+        if(topGitRepos.items.size > 0) {
+            txtWarning.visibility = View.GONE
+            gitReposList = topGitRepos.items
+            repositoriesManager = LinearLayoutManager(context)
+            repositoriesAdapter = ReposAdapter(gitReposList, this)
+            rcvRepositories = requireView().findViewById<RecyclerView>(R.id.rcvRepositories).apply{
+                setHasFixedSize(true)
+                val spacingItemDecoration = SpacingItemDecoration(30)
+                addItemDecoration(spacingItemDecoration)
+                layoutManager = repositoriesManager
+                adapter = repositoriesAdapter
+            }
+        } else {
+            txtWarning.visibility = View.VISIBLE
         }
     }
 

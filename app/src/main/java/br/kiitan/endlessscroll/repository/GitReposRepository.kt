@@ -23,7 +23,7 @@ class GitReposRepository(val reposPresenter: GitReposPresenter){
                 }
 
                 override fun onFailure(call: Call<TopGitRepos?>?, t: Throwable?) {
-                    Log.e("REPOSITORY", "Error: " + t?.message?:"")
+                    reposPresenter.setTopGitRepos(TopGitRepos(arrayOf()))
                 }
             })
         }
@@ -41,7 +41,7 @@ class GitReposRepository(val reposPresenter: GitReposPresenter){
                 }
 
                 override fun onFailure(call: Call<Array<ReposPulls>?>?, t: Throwable?) {
-                    Log.e("REPOSITORY", "Error: " + t?.message?:"")
+                    reposPresenter.setGitPulls(arrayOf())
                 }
             })
         }

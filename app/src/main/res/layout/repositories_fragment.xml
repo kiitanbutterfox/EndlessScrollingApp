@@ -11,7 +11,16 @@
     style="?android:attr/progressBarStyleLarge"
     android:layout_centerHorizontal="true"
     android:visibility="gone"/>
-
+    <TextView
+        android:id="@+id/txtWarning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_repositories_found"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvRepositories"
         android:layout_width="match_parent"

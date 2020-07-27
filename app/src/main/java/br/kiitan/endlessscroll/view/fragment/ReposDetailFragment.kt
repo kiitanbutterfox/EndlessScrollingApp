@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.kiitan.endlessscroll.ChangeTitleListener
@@ -16,6 +17,7 @@ import br.kiitan.endlessscroll.view.SpacingItemDecoration
 import br.kiitan.endlessscroll.view.adapter.PullsAdapter
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.processNextEventInCurrentThread
+import org.w3c.dom.Text
 import java.lang.ClassCastException
 
 class ReposDetailFragment : BaseFragment(), ReposContract.ReposDetailFragmentView {
@@ -26,6 +28,7 @@ class ReposDetailFragment : BaseFragment(), ReposContract.ReposDetailFragmentVie
     private lateinit var reposPresenter: ReposContract.Presenter
     private lateinit var gitPullsList: Array<ReposPulls>
     private lateinit var changeTitleListener: ChangeTitleListener
+    private lateinit var txtWarningPulls: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,15 +57,23 @@ class ReposDetailFragment : BaseFragment(), ReposContract.ReposDetailFragmentVie
     override fun fillPullsList(repoPullsList: Array<ReposPulls>)
     {
         pgrLoadingPulls.visibility = View.GONE
-        gitPullsList = repoPullsList
-        pullsManager = LinearLayoutManager(context)
-        pullsAdapter = PullsAdapter(gitPullsList)
-        rcvPulls = requireView().findViewById<RecyclerView>(R.id.rcvRepoPulls).apply{
-            setHasFixedSize(true)
-            val spacingItemDecoration = SpacingItemDecoration(30)
-            addItemDecoration(spacingItemDecoration)
-            layoutManager = pullsManager
-            adapter = pullsAdapter
+        txtWarningPulls = requireView().findViewById(R.id.txtWarningPulls)
+        if(repoPullsList.size > 0) {
+            txtWarningPulls.visibility = View.GONE
+            pgrLoadingPulls.visibility = View.GONE
+            gitPullsList = repoPullsList
+            pullsManager = LinearLayoutManager(context)
+            pullsAdapter = PullsAdapter(gitPullsList)
+            rcvPulls = requireView().findViewById<RecyclerView>(R.id.rcvRepoPulls).apply {
+                setHasFixedSize(true)
+                val spacingItemDecoration = SpacingItemDecoration(30)
+                addItemDecoration(spacingItemDecoration)
+                layoutManager = pullsManager
+                adapter = pullsAdapter
+            }
+        } else
+        {
+            txtWarningPulls.visibility = View.VISIBLE
         }
     }
 

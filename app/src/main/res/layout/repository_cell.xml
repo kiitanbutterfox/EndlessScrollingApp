@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginRight="10dp">
+            android:layout_marginEnd="10dp">
             <ImageView
                 android:id="@+id/imvUserAvatar"
                 android:layout_width="75dp"
@@ -33,26 +33,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Username"
                 android:textColor="@color/subtitle"/>
         </LinearLayout>
         <TextView
             android:id="@+id/txtRepositoryName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Repositório"
             android:layout_alignTop="@id/lnlUserInfo"
-            android:layout_toRightOf="@id/lnlUserInfo"
+            android:layout_toEndOf="@id/lnlUserInfo"
             android:textColor="@color/title"
             android:textSize="18sp"/>
         <TextView
             android:id="@+id/txtRepositoryDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição do Repositório Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum feugiat varius. Curabitur placerat mauris at sodales sodales. Aliquam interdum.  "
             android:layout_below="@id/txtRepositoryName"
             android:maxLines="3"
-            android:layout_alignLeft="@id/txtRepositoryName"
+            android:layout_alignStart="@id/txtRepositoryName"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:layout_marginBottom="15dp"/>
@@ -62,7 +59,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_png_transparent_github_computer_icons_branching_github_branch_fork_git_thumbnail"
             android:layout_below="@id/txtRepositoryDescription"
-            android:layout_alignLeft="@id/txtRepositoryName"
+            android:layout_alignStart="@id/txtRepositoryName"
             android:layout_alignTop="@id/txtRepositoryForkCount"
             android:layout_alignBottom="@id/txtRepositoryForkCount"
             android:tint="@color/highlight"/>
@@ -70,8 +67,7 @@
             android:id="@+id/txtRepositoryForkCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forks"
-            android:layout_toRightOf="@id/imvForkIcon"
+            android:layout_toEndOf="@id/imvForkIcon"
             android:layout_below="@id/txtRepositoryDescription"
             android:textColor="@color/highlight"
             android:textSize="12sp"/>
@@ -79,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_star_24"
-            android:layout_toLeftOf="@id/txtRepositoryStarCount"
+            android:layout_toStartOf="@id/txtRepositoryStarCount"
             android:layout_alignTop="@id/txtRepositoryStarCount"
             android:layout_alignBottom="@id/txtRepositoryStarCount"
             android:tint="@color/highlight"/>
@@ -87,7 +83,6 @@
             android:id="@+id/txtRepositoryStarCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stars"
             android:layout_below="@id/txtRepositoryDescription"
             android:layout_alignParentEnd="true"
             android:textColor="@color/highlight"

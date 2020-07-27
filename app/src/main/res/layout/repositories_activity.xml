@@ -19,9 +19,9 @@
             android:src="@drawable/ic_keyboard_arrow_left_24px"
             android:layout_centerVertical="true"
             android:tint="@android:color/white"
-            android:clickable="true"
             android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:background="@drawable/custom_ripple_effect"
             android:visibility="gone"/>
         <TextView
             android:id="@+id/txtPageTitle"
