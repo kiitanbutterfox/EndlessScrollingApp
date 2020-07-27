@@ -1,10 +1,13 @@
 package br.kiitan.endlessscroll.view.activity
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import br.kiitan.endlessscroll.R
 import br.kiitan.endlessscroll.contract.ReposContract
+import br.kiitan.endlessscroll.model.ReposPulls
 import br.kiitan.endlessscroll.model.TopGitRepos
 import br.kiitan.endlessscroll.presenter.GitReposPresenter
 import br.kiitan.endlessscroll.view.fragment.BaseFragment
@@ -13,6 +16,7 @@ import br.kiitan.endlessscroll.view.fragment.ReposFragment
 class RepositoriesActivity : BaseActivity(), ReposContract.View {
     private lateinit var reposPresenter: ReposContract.Presenter
     private var currentFragment: BaseFragment? = null
+    private lateinit var imvBack: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.repositories_activity)
@@ -22,14 +26,19 @@ class RepositoriesActivity : BaseActivity(), ReposContract.View {
 //                    .setAction("Action", null).show()
 //        }
         loadFragment(ReposFragment())
+        imvBack = findViewById(R.id.imvBack)
+        imvBack.setOnClickListener({
+            onBackPressed()
+        })
     }
 
     fun loadFragment(fragment: BaseFragment){
+    override fun loadFragment(fragment: BaseFragment){
         fragment.arguments = intent.extras
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.add(R.id.lnlFragmentHolder, fragment, "test")
+        transaction.replace(R.id.lnlFragmentHolder, fragment)
+        transaction.addToBackStack(null)
         transaction.commit()
-        currentFragment = fragment
     }
 
     override fun showError(message: String) {
@@ -41,9 +50,18 @@ class RepositoriesActivity : BaseActivity(), ReposContract.View {
     }
 
     override fun setTopGitRepos(topGitRepos: TopGitRepos) {
+        currentFragment = supportFragmentManager.fragments.last() as BaseFragment
         if(currentFragment != null && currentFragment is ReposContract.ReposFragmentView)
         {
             (currentFragment as ReposContract.ReposFragmentView).fillRepositoriesList(topGitRepos)
+        }
+    }
+
+    override fun setGitPulls(pullsList: Array<ReposPulls>) {
+        currentFragment = supportFragmentManager.fragments.last() as BaseFragment
+        if(currentFragment != null && currentFragment is ReposContract.ReposDetailFragmentView)
+        {
+            (currentFragment as ReposContract.ReposDetailFragmentView).fillPullsList(pullsList)
         }
     }
 
@@ -51,15 +69,28 @@ class RepositoriesActivity : BaseActivity(), ReposContract.View {
         reposPresenter = presenter
     }
 
-    override fun detachPresenter() {
-        TODO("Not yet implemented")
+    override fun onBackPressed() {
+        supportFragmentManager.executePendingTransactions()
+        val count = supportFragmentManager.backStackEntryCount
+        if (count <= 1) {
+            finish()
+        } else {
+            if(count <=2)
+            {
+                showHideBackArrow(false)
+            }
+            supportFragmentManager.popBackStack()
+        }
     }
 
-    override fun showProgress() {
-        TODO("Not yet implemented")
+    override fun showHideBackArrow(show: Boolean){
+        if(show) {
+            imvBack.visibility = View.VISIBLE
+        }
+        else {
+            imvBack.visibility = View.GONE
+        }
     }
 
-    override fun hideProgress() {
-        TODO("Not yet implemented")
     }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="15dp"
+    android:background="@color/foreground2"
+    android:backgroundTint="@color/foreground2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+        <LinearLayout
+            android:id="@+id/lnlUserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/txtPullRequestDescription">
+            <ImageView
+                android:id="@+id/imvUserAvatar"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:scaleType="fitXY"
+                android:layout_marginRight="10dp"/>
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="Username"
+                android:textColor="@color/subtitle"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/txtPullRequestName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Repositório"
+            android:textColor="@color/title"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/txtPullRequestDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descrição do Repositório Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum feugiat varius. Curabitur placerat mauris at sodales sodales. Aliquam interdum.  "
+            android:layout_below="@id/txtPullRequestName"
+            android:maxLines="3"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_alignLeft="@id/txtPullRequestName"
+            android:layout_marginBottom="15sp"/>
+        <TextView
+            android:id="@+id/txtPullStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textSize="18sp"
+            android:textColor="@color/highlight"
+            android:layout_alignParentEnd="true"
+
+            android:layout_alignBottom="@id/lnlUserInfo"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
