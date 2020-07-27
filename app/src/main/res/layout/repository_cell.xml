@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="10dp"
-    app:cardElevation="15dp">
+    app:cardElevation="15dp"
+    android:background="@color/foreground2"
+    android:backgroundTint="@color/foreground2">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                android:text="Username" />
+                android:text="Username"
+                android:textColor="@color/subtitle"/>
         </LinearLayout>
         <TextView
             android:id="@+id/txtRepositoryName"
@@ -35,7 +38,9 @@
             android:layout_height="wrap_content"
             android:text="Nome do Repositório"
             android:layout_alignTop="@id/lnlUserInfo"
-            android:layout_toRightOf="@id/lnlUserInfo"/>
+            android:layout_toRightOf="@id/lnlUserInfo"
+            android:textColor="@color/title"
+            android:textSize="18sp"/>
         <TextView
             android:id="@+id/txtRepositoryDescription"
             android:layout_width="wrap_content"
@@ -43,21 +48,46 @@
             android:text="Descrição do Repositório Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum feugiat varius. Curabitur placerat mauris at sodales sodales. Aliquam interdum.  "
             android:layout_below="@id/txtRepositoryName"
             android:maxLines="3"
-            android:layout_alignLeft="@id/txtRepositoryName"/>
+            android:layout_alignLeft="@id/txtRepositoryName"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:layout_marginBottom="15dp"/>
+        <ImageView
+            android:id="@+id/imvForkIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_png_transparent_github_computer_icons_branching_github_branch_fork_git_thumbnail"
+            android:layout_below="@id/txtRepositoryDescription"
+            android:layout_alignLeft="@id/txtRepositoryName"
+            android:layout_alignTop="@id/txtRepositoryForkCount"
+            android:layout_alignBottom="@id/txtRepositoryForkCount"
+            android:tint="@color/highlight"/>
         <TextView
             android:id="@+id/txtRepositoryForkCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forks"
+            android:layout_toRightOf="@id/imvForkIcon"
             android:layout_below="@id/txtRepositoryDescription"
-            android:layout_alignLeft="@id/txtRepositoryName"/>
+            android:textColor="@color/highlight"
+            android:textSize="12sp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_star_24"
+            android:layout_toLeftOf="@id/txtRepositoryStarCount"
+            android:layout_alignTop="@id/txtRepositoryStarCount"
+            android:layout_alignBottom="@id/txtRepositoryStarCount"
+            android:tint="@color/highlight"/>
         <TextView
             android:id="@+id/txtRepositoryStarCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Stars"
             android:layout_below="@id/txtRepositoryDescription"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/highlight"
+            android:textSize="12sp"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

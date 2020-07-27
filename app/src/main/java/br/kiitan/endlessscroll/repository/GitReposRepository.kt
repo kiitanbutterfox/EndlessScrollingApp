@@ -1,6 +1,8 @@
 package br.kiitan.endlessscroll.repository
 
 import android.util.Log
+import br.kiitan.endlessscroll.model.ReposItem
+import br.kiitan.endlessscroll.model.ReposPulls
 import br.kiitan.endlessscroll.model.TopGitRepos
 import br.kiitan.endlessscroll.presenter.GitReposPresenter
 import retrofit2.Call
@@ -21,6 +23,24 @@ class GitReposRepository(val reposPresenter: GitReposPresenter){
                 }
 
                 override fun onFailure(call: Call<TopGitRepos?>?, t: Throwable?) {
+                    Log.e("REPOSITORY", "Error: " + t?.message?:"")
+                }
+            })
+        }
+
+    }
+
+    fun getRepoPulls(repo: ReposItem) {
+        val retrofit: Retrofit = RetrofitConfig.retrofit
+        val gitReposAPI: GitReposAPI = retrofit.create(GitReposAPI::class.java)
+
+        gitReposAPI.getRepositoryPulls(repo.owner.login, repo.name).apply {
+            enqueue(object : Callback<Array<ReposPulls>?> {
+                override fun onResponse(call: Call<Array<ReposPulls>?>?, response: Response<Array<ReposPulls>?>?) {
+                    reposPresenter.setGitPulls(response?.body()?: arrayOf())
+                }
+
+                override fun onFailure(call: Call<Array<ReposPulls>?>?, t: Throwable?) {
                     Log.e("REPOSITORY", "Error: " + t?.message?:"")
                 }
             })

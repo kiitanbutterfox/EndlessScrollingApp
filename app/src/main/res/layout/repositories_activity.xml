@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".view.activity.RepositoriesActivity">
+    tools:context=".view.activity.RepositoriesActivity"
+    android:background="@color/background">
+    <RelativeLayout
+        android:id="@+id/rltTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/foreground">
+        <ImageView
+            android:id="@+id/imvBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_arrow_left_24px"
+            android:layout_centerVertical="true"
+            android:tint="@android:color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"/>
+        <TextView
+            android:id="@+id/txtPageTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/top_java_repositories"
+            android:textColor="@android:color/white"
+            android:layout_centerInParent="true"
+            android:textAlignment="center"
+            android:textSize="20sp"/>
+        <ImageView
+            android:id="@+id/imvGitIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_github_153_675523"
+            android:tint="@android:color/white"
+            android:layout_margin="10dp"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
     <LinearLayout
         android:id="@+id/lnlFragmentHolder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/rltTitleBar"/>
+</RelativeLayout>

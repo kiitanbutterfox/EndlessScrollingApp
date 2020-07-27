@@ -4,6 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragment.ReposFragment">
+<ProgressBar
+    android:id="@+id/pgrLoadingRepos"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    style="?android:attr/progressBarStyleLarge"
+    android:layout_centerHorizontal="true"
+    android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvRepositories"

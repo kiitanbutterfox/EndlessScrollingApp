@@ -25,6 +25,7 @@ class ReposDetailFragment : BaseFragment(), ReposContract.ReposDetailFragmentVie
     private lateinit var pullsManager: RecyclerView.LayoutManager
     private lateinit var reposPresenter: ReposContract.Presenter
     private lateinit var gitPullsList: Array<ReposPulls>
+    private lateinit var changeTitleListener: ChangeTitleListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,8 @@ class ReposDetailFragment : BaseFragment(), ReposContract.ReposDetailFragmentVie
             pgrLoadingPulls = requireView().findViewById<ProgressBar>(R.id.pgrLoadingPulls)
             pgrLoadingPulls.visibility = View.VISIBLE
             pgrLoadingPulls.animate()
+            changeTitleListener = activity as ChangeTitleListener
+            changeTitleListener.changePageTitle(reposPresenter.getSelectedRepoTitle())
         }
         catch (e: ClassCastException) {
            Log.e("REPOSDETAILFRAGMENT", e.message?:"")

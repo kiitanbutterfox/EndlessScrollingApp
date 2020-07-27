@@ -16,5 +16,5 @@ interface GitReposAPI {
 
     @GET("repos/{repository_owner}/{repository_name}/pulls")
     fun getRepositoryPulls(@Path("repository_owner") repositoryOwner: String,
-                           @Path("repository_name") repositoryName: String): Call<ReposPulls>
+                           @Path("repository_name") repositoryName: String): Call<Array<ReposPulls>>
 }

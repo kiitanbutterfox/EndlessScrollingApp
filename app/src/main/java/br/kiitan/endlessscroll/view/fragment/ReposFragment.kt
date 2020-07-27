@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import br.kiitan.endlessscroll.ChangeTitleListener
 import br.kiitan.endlessscroll.R
 import br.kiitan.endlessscroll.ReposInteractionListener
 import br.kiitan.endlessscroll.contract.ReposContract
@@ -24,6 +25,7 @@ class ReposFragment : BaseFragment(), ReposContract.ReposFragmentView, ReposInte
     private lateinit var repositoriesManager: RecyclerView.LayoutManager
     private lateinit var reposPresenter: ReposContract.Presenter
     private lateinit var gitReposList: Array<ReposItem>
+    private lateinit var changeTitleListener: ChangeTitleListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.repositories_fragment, container, false)
@@ -38,10 +40,13 @@ class ReposFragment : BaseFragment(), ReposContract.ReposFragmentView, ReposInte
             pgrLoadingRepos = requireView().findViewById<ProgressBar>(R.id.pgrLoadingRepos)
             pgrLoadingRepos.visibility = View.VISIBLE
             pgrLoadingRepos.animate()
+            changeTitleListener = activity as ChangeTitleListener
+            changeTitleListener.changePageTitle(getString(R.string.top_java_repositories))
         }
         catch (e: ClassCastException)
         {
             Log.e("REPOSFRAGMENT", e.message?:"")
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
