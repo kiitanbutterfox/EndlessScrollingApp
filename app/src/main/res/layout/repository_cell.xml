@@ -9,9 +9,13 @@
     android:background="@color/foreground2"
     android:backgroundTint="@color/foreground2">
     <RelativeLayout
+        android:id="@+id/rltRepoInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/custom_ripple_effect">
         <LinearLayout
             android:id="@+id/lnlUserInfo"
             android:layout_width="wrap_content"

@@ -9,6 +9,7 @@
     android:background="@color/foreground2"
     android:backgroundTint="@color/foreground2">
     <RelativeLayout
+        android:id="@+id/rltPullInfo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp">
@@ -29,21 +30,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="Username"
                 android:textColor="@color/subtitle"/>
         </LinearLayout>
         <TextView
             android:id="@+id/txtPullRequestName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Repositório"
             android:textColor="@color/title"
             android:textSize="16sp"/>
         <TextView
             android:id="@+id/txtPullRequestDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição do Repositório Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rutrum feugiat varius. Curabitur placerat mauris at sodales sodales. Aliquam interdum.  "
             android:layout_below="@id/txtPullRequestName"
             android:maxLines="3"
             android:textColor="@android:color/white"
@@ -54,7 +52,6 @@
             android:id="@+id/txtPullStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status"
             android:textSize="18sp"
             android:textColor="@color/highlight"
             android:layout_alignParentEnd="true"

@@ -3,7 +3,9 @@ package br.kiitan.endlessscroll.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.kiitan.endlessscroll.R
@@ -39,6 +41,7 @@ class PullsAdapter(private val reposPulls: Array<ReposPulls>): RecyclerView.Adap
         var txtPullRequestName: TextView = itemView.findViewById(R.id.txtPullRequestName)
         var txtPullRequestDescription: TextView = itemView.findViewById(R.id.txtPullRequestDescription)
         var txtPullStatus: TextView = itemView.findViewById(R.id.txtPullStatus)
+        var rltPullInfo: RelativeLayout = itemView.findViewById(R.id.rltPullInfo)
 
         fun bind(reposPull: ReposPulls){
             txtUserName.text = reposPull.user.login
@@ -50,6 +53,9 @@ class PullsAdapter(private val reposPulls: Array<ReposPulls>): RecyclerView.Adap
                 .applyDefaultRequestOptions(requestOptions)
                 .load(reposPull.user.avatar_url)
                 .into(imvUserAvatar)
+            imvUserAvatar.animation = AnimationUtils.loadAnimation(itemView.context,R.anim.fade_transition_animation)
+
+            rltPullInfo.animation = AnimationUtils.loadAnimation(itemView.context,R.anim.fade_scale_animation)
             txtPullRequestName.text = reposPull.title
             txtPullRequestDescription.text = reposPull.body
             txtPullStatus.text = reposPull.state

@@ -91,4 +91,5 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="top_java_repositories">Top Java Repositories</string>
+    <string name="no_repositories_found">No repositories found</string>
 </resources>
